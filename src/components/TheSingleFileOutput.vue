@@ -9,14 +9,15 @@
         height: store.singleImageHeight,
       }"
       class="border rounded border-defaultDark dark:border-defaultLight"
+      :title="title"
     />
   </div>
 </template>
 
 <script setup lang="ts">
 // #region imports
+import { ref, computed } from "vue";
 import { useMainStore } from "../stores/mainStore";
-import { ref } from "vue";
 // #endregion
 
 // #region component setup
@@ -32,5 +33,9 @@ const onSingleImageLoad = () => {
     );
   }
 };
+
+const title = computed(() => {
+  return `${store.currentFiles[0].source.name}, ${singleImage.value?.naturalWidth}x${singleImage.value?.naturalHeight}`;
+});
 // #endregion
 </script>

@@ -2,19 +2,23 @@
   <div
     class="w-full p-4 flex justify-between items-center text-defaultDark dark:text-defaultLight"
   >
-    <div class="flex items-center gap-2">
+    <div class="flex items-center gap-3">
       <template v-if="store.currentFiles.length">
-        <button type="button" @click="store.resetFiles">
+        <button type="button" @click="store.resetFiles" title="Reset">
           <XCircleIcon class="w-6 h-6" />
         </button>
-        <label for="fileInput" class="cursor-pointer">
+        <label for="fileInput" class="cursor-pointer" title="Add new file">
           <PlusCircleIcon class="w-6 h-6" />
           <TheFileInput />
         </label>
       </template>
       <TheScaleSlider v-if="store.currentFiles.length === 1" />
     </div>
-    <button type="button" @click="toggleDarkMode">
+    <button
+      type="button"
+      @click="toggleDarkMode"
+      title="Toggle light/dark mode"
+    >
       <MoonIcon v-if="store.isDark" class="w-6 h-6" />
       <SunIcon v-else class="w-6 h-6" />
     </button>

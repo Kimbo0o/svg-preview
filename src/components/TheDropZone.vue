@@ -1,5 +1,6 @@
 <template>
   <div
+    ref="targetEl"
     class="m-4 mt-0"
     @drop="onHandleDrop"
     @dragover="onHandleDragOver"
@@ -11,15 +12,15 @@
     >
       <TheLargeFileInput :dragging-over="dragging" />
     </div>
-    <div v-else>
+    <template v-else>
       <slot></slot>
-    </div>
+    </template>
   </div>
 </template>
 
 <script setup lang="ts">
 // #region imports
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useMainStore } from "../stores/mainStore";
 import TheLargeFileInput from "./TheLargeFileInput.vue";
 // #endregion
@@ -39,8 +40,9 @@ const onHandleDragLeave = () => {
 };
 
 const onHandleDrop = (event: DragEvent) => {
-  console.log("drop", event);
   event.preventDefault();
+
+  dragging.value = false;
 
   if (event.dataTransfer?.items) {
     [...event.dataTransfer.items].forEach((item) => {
@@ -57,6 +59,14 @@ const onHandleDrop = (event: DragEvent) => {
     });
   }
 };
+// #endregion
 
+// #region target size
+const targetEl = ref<HTMLDivElement | null>(null);
+onMounted(() => {
+  if (targetEl.value) {
+    store.setTargetEl(targetEl.value);
+  }
+});
 // #endregion
 </script>

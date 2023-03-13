@@ -1,9 +1,9 @@
 <template>
   <img
-    class="w-8 h-8"
     :src="store.currentFiles[0].objectUrl"
     ref="singleImage"
     @load="onSingleImageLoad"
+    :style="{ width: store.singleImageWidth, height: store.singleImageHeight }"
   />
 </template>
 

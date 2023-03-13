@@ -1,6 +1,6 @@
 <template>
-  <div v-if="store.currentFiles.length === 1">
-    <TheSingleFileOutput />
+  <div class="w-full h-full flex items-center justify-center">
+    <TheSingleFileOutput v-if="store.currentFiles.length === 1" />
   </div>
 </template>
 

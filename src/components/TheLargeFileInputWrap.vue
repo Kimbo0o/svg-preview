@@ -11,7 +11,10 @@
             class="text-defaultDark dark:text-defaultLight text-center flex flex-col items-center"
           >
             <PlusIcon class="w-16 h-16 mb-4"></PlusIcon>
-            <div>Drop svg file(s) or click to open selection</div>
+            <div>
+              Drop svg file(s)
+              <span v-if="!props.draggingOver">or click to open selection</span>
+            </div>
           </div>
         </div>
       </label>

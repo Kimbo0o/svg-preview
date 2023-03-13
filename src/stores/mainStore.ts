@@ -2,6 +2,8 @@ import { computed, ref } from "vue";
 import { defineStore } from "pinia";
 import { useElementSize } from "@vueuse/core";
 
+export type AppFile = { source: File; objectUrl: string; key: number };
+
 export const useMainStore = defineStore("main", () => {
   // #region dark mode
   const isDark = ref(false);
@@ -12,7 +14,7 @@ export const useMainStore = defineStore("main", () => {
   // #endregion
 
   // #region files
-  const currentFiles = ref<{ source: File; objectUrl: string }[]>([]);
+  const currentFiles = ref<AppFile[]>([]);
 
   const handleNewFile = (newFile: File) => {
     console.log("handle new File", newFile);
@@ -20,8 +22,10 @@ export const useMainStore = defineStore("main", () => {
       currentFiles.value.push({
         source: newFile,
         objectUrl: URL.createObjectURL(newFile),
+        key: currentFiles.value.length,
       });
     }
+    console.log(currentFiles.value);
   };
 
   const resetFiles = () => {

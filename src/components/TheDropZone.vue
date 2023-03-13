@@ -1,15 +1,16 @@
 <template>
   <div
     ref="targetEl"
-    class="m-4 mt-0"
+    class="overflow-y-auto"
+    :class="{
+      'm-4 mt-0': showInput,
+      'p-4 pt-0': !showInput,
+    }"
     @drop="onHandleDrop"
     @dragover="onHandleDragOver"
     @dragleave="onHandleDragLeave"
   >
-    <div
-      v-if="dragging || store.currentFiles.length === 0"
-      class="w-full h-full"
-    >
+    <div v-if="showInput" class="w-full h-full">
       <TheLargeFileInputWrap :dragging-over="dragging" />
     </div>
     <template v-else>
@@ -20,7 +21,7 @@
 
 <script setup lang="ts">
 // #region imports
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 import { useMainStore } from "../stores/mainStore";
 import TheLargeFileInputWrap from "./TheLargeFileInputWrap.vue";
 // #endregion
@@ -59,6 +60,10 @@ const onHandleDrop = (event: DragEvent) => {
     });
   }
 };
+
+const showInput = computed(() => {
+  return dragging.value || store.currentFiles.length === 0;
+});
 // #endregion
 
 // #region target size

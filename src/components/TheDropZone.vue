@@ -10,7 +10,7 @@
       v-if="dragging || store.currentFiles.length === 0"
       class="w-full h-full"
     >
-      <TheLargeFileInput :dragging-over="dragging" />
+      <TheLargeFileInputWrap :dragging-over="dragging" />
     </div>
     <template v-else>
       <slot></slot>
@@ -22,7 +22,7 @@
 // #region imports
 import { ref, onMounted } from "vue";
 import { useMainStore } from "../stores/mainStore";
-import TheLargeFileInput from "./TheLargeFileInput.vue";
+import TheLargeFileInputWrap from "./TheLargeFileInputWrap.vue";
 // #endregion
 
 // #region component setup

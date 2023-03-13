@@ -23,6 +23,10 @@ export const useMainStore = defineStore("main", () => {
       });
     }
   };
+
+  const resetFiles = () => {
+    currentFiles.value = [];
+  };
   // #endregion
 
   // #region single image sizing
@@ -82,6 +86,7 @@ export const useMainStore = defineStore("main", () => {
     isDark,
     toggleDarkMode,
     currentFiles,
+    resetFiles,
     handleNewFile,
     setTargetEl,
     initSingleImageSize,

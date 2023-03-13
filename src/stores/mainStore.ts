@@ -87,5 +87,6 @@ export const useMainStore = defineStore("main", () => {
     initSingleImageSize,
     singleImageWidth,
     singleImageHeight,
+    singleImageScale,
   };
 });

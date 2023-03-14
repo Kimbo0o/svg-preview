@@ -8,7 +8,7 @@
         width: store.singleImageWidth,
         height: store.singleImageHeight,
       }"
-      class="border rounded border-defaultDark dark:border-defaultLight"
+      class="border rounded border-defaultDark/50 dark:border-defaultLight/50"
       :title="title"
     />
   </div>

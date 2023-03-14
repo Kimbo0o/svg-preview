@@ -6,7 +6,7 @@ module.exports = {
     extend: {
       colors: {
         defaultDark: colors.gray[700],
-        defaultLight: colors.gray[100],
+        defaultLight: colors.gray[200],
       },
     },
   },

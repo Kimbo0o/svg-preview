@@ -6,9 +6,10 @@
       'm-4 mt-0': showInput,
       'p-4 pt-0': !showInput,
     }"
-    @drop="onHandleDrop"
-    @dragover="onHandleDragOver"
-    @dragleave="onHandleDragLeave"
+    @drop="onDrop"
+    @dragleave="onDragLeave"
+    @dragenter="onDragEnter"
+    @dragover="onDragOver"
   >
     <div v-if="showInput" class="w-full h-full">
       <TheLargeFileInputWrap :dragging-over="dragging" />
@@ -29,21 +30,31 @@ import TheLargeFileInputWrap from "./TheLargeFileInputWrap.vue";
 // #region component setup
 const store = useMainStore();
 
-const dragging = ref(false);
+const showInput = computed(() => {
+  return dragging.value || store.currentFiles.length === 0;
+});
+// #endregion
 
-const onHandleDragOver = (event: DragEvent) => {
-  event.preventDefault();
-  dragging.value = true;
+// #region drag & drop
+const dragCounter = ref(0);
+
+const dragging = computed(() => dragCounter.value > 0);
+
+const onDragEnter = () => {
+  dragCounter.value++;
 };
 
-const onHandleDragLeave = () => {
-  dragging.value = false;
+const onDragOver = (event: DragEvent) => {
+  event.preventDefault();
 };
 
-const onHandleDrop = (event: DragEvent) => {
-  event.preventDefault();
+const onDragLeave = () => {
+  dragCounter.value--;
+};
 
-  dragging.value = false;
+const onDrop = (event: DragEvent) => {
+  event.preventDefault();
+  dragCounter.value = 0;
 
   if (event.dataTransfer?.items) {
     [...event.dataTransfer.items].forEach((item) => {
@@ -60,10 +71,6 @@ const onHandleDrop = (event: DragEvent) => {
     });
   }
 };
-
-const showInput = computed(() => {
-  return dragging.value || store.currentFiles.length === 0;
-});
 // #endregion
 
 // #region target size

@@ -4,10 +4,9 @@
       ref="imageEl"
       class="border rounded border-defaultDark dark:border-defaultLight"
       :src="props.file.objectUrl"
-      @load="onImageLoaded"
     />
     <div class="mt-2 text-defaultDark dark:text-defaultLight text-xs">
-      {{ props.file.source.name }}, {{ sizeInfo }}
+      {{ props.file.source.name }}
     </div>
   </div>
 </template>
@@ -23,15 +22,6 @@ const props = defineProps<{
   file: AppFile;
 }>();
 
-const sizeInfo = ref("");
-
 const imageEl = ref<HTMLImageElement | null>(null);
-
-const onImageLoaded = () => {
-  if (imageEl.value) {
-    sizeInfo.value =
-      imageEl.value.naturalWidth + "x" + imageEl.value.naturalHeight;
-  }
-};
 // #endregion
 </script>

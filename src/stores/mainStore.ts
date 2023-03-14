@@ -53,7 +53,7 @@ export const useMainStore = defineStore("main", () => {
     return singleImageNaturalWidth.value / singleImageNaturalHeight.value;
   });
 
-  const singleImageScale = ref(0);
+  const singleImageScale = ref(0.5);
 
   const singleImageReference = computed(() => {
     return targetRatio.value > imageRatio.value ? "height" : "width";
@@ -63,10 +63,7 @@ export const useMainStore = defineStore("main", () => {
     singleImageNaturalWidth.value = naturalWidth;
     singleImageNaturalHeight.value = naturalHeight;
     // init scale
-    singleImageScale.value =
-      singleImageReference.value === "width"
-        ? singleImageNaturalWidth.value / targetElWidth.value
-        : singleImageNaturalHeight.value / targetElHeight.value;
+    singleImageScale.value = 0.5;
   };
 
   const singleImageWidth = computed(() => {

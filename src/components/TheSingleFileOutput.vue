@@ -35,7 +35,7 @@ const onSingleImageLoad = () => {
 };
 
 const title = computed(() => {
-  return `${store.currentFiles[0].source.name}, ${singleImage.value?.naturalWidth}x${singleImage.value?.naturalHeight}`;
+  return store.currentFiles[0].source.name;
 });
 // #endregion
 </script>

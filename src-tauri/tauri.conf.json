@@ -7,7 +7,7 @@
     "withGlobalTauri": false
   },
   "package": {
-    "productName": "svg-preview",
+    "productName": "SVG Preview",
     "version": "0.1.0"
   },
   "tauri": {
@@ -33,7 +33,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.kimdaniel.svg-previewer",
+      "identifier": "com.kimdaniel.svg-preview",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
@@ -68,7 +68,7 @@
         "fullscreen": false,
         "height": 600,
         "resizable": true,
-        "title": "svg-preview",
+        "title": "SVG Preview",
         "width": 600,
         "visible": false,
         "hiddenTitle": true,

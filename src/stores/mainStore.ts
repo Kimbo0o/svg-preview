@@ -1,12 +1,17 @@
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 import { defineStore } from "pinia";
-import { useElementSize } from "@vueuse/core";
+import { useElementSize, usePreferredDark } from "@vueuse/core";
 
 export type AppFile = { source: File; objectUrl: string; key: number };
 
 export const useMainStore = defineStore("main", () => {
   // #region dark mode
-  const isDark = ref(false);
+  const isPreferredDark = usePreferredDark();
+
+  watch(isPreferredDark, (newPreferredDark) => {
+    isDark.value = newPreferredDark;
+  });
+  const isDark = ref(isPreferredDark.value);
 
   const toggleDarkMode = () => {
     isDark.value = !isDark.value;

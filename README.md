@@ -1,16 +1,17 @@
-# Tauri + Vue 3 + TypeScript
+# SVG Preview
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+This is a utility app for Mac OS to preview SVG Files. You can either preview single files or a list of files. The main avantage over the preview built into Mac OS is that it works for svgs with white content which is not visible in the built in preview.
 
-## Recommended IDE Setup
+![demo](./demo.gif)
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+## Tech Stack
+This app is built using the following Technologies
+- [Tauri](https://tauri.app/)
+- [Vite](https://vitejs.dev/)
+- [Vue.js](https://vuejs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
 
-## Type Support For `.vue` Imports in TS
+## What I learned
+This is my first complete tauri app, so I learned the basic tauri setup, setting it up as a system tray app and using GitHub Actions to build the app on release.
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's Take Over mode by following these steps:
-
-1. Run `Extensions: Show Built-in Extensions` from VS Code's command palette, look for `TypeScript and JavaScript Language Features`, then right click and select `Disable (Workspace)`. By default, Take Over mode will enable itself if the default TypeScript extension is disabled.
-2. Reload the VS Code window by running `Developer: Reload Window` from the command palette.
-
-You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/volar/discussions/471).
+In this app I also implemented a dark/light mode switch for the first time. The mode switches based on the mode in the OS as well as in the app itself.

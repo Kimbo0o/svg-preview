@@ -11,12 +11,8 @@
     @dragenter="onDragEnter"
     @dragover="onDragOver"
   >
-    <div v-if="showInput" class="w-full h-full">
-      <TheLargeFileInputWrap :dragging-over="dragging" />
-    </div>
-    <template v-else>
-      <slot></slot>
-    </template>
+    <TheLargeFileInputWrap v-if="showInput" :dragging-over="dragging" />
+    <TheFileOutput v-else />
   </div>
 </template>
 
@@ -24,6 +20,7 @@
 // #region imports
 import { ref, onMounted, computed } from "vue";
 import { useMainStore } from "../stores/mainStore";
+import TheFileOutput from "./TheFileOutput.vue";
 import TheLargeFileInputWrap from "./TheLargeFileInputWrap.vue";
 // #endregion
 

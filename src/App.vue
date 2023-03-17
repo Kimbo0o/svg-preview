@@ -6,9 +6,7 @@
       <div class="h-full bg-defaultLight dark:bg-defaultDark rounded-lg">
         <div class="h-full grid grid-cols-1 grid-rows-[min-content_1fr]">
           <TheMenuBar />
-          <TheDropZone>
-            <TheFileOutput />
-          </TheDropZone>
+          <TheDropZone />
         </div>
       </div>
     </div>
@@ -19,13 +17,7 @@
 // #region imports
 import TheDarkMode from "./components/TheDarkMode.vue";
 import TheDropZone from "./components/TheDropZone.vue";
-import TheFileOutput from "./components/TheFileOutput.vue";
 import TheMenuBar from "./components/TheMenuBar.vue";
-import { useMainStore } from "./stores/mainStore";
-// #endregion
-
-// #region component setup
-const store = useMainStore();
 // #endregion
 </script>
 
